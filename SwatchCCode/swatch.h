@@ -11,6 +11,7 @@ typedef enum interface {
 typedef enum setting { SET_HOURS, SET_MINUTE } setting_t;
 typedef enum sw_subs { DISPLAY, PARTIAL } sw_subs_t;
 typedef enum tc_state { NOT_COUNTING, COUNTING } tc_state_t;
+typedef enum alarm_state { NOT_SETTED, SILENT, BUZZING } alarm_state_t;
 
 typedef unsigned char bool_t;
 
@@ -31,6 +32,7 @@ typedef struct stopwatch {
     setting_t sett_subs;
     sw_subs_t swatch_subs;
     tc_state_t sc_state;
+    alarm_state_t a_state;
 } stopwatch_t;
 
 void swatch_init();

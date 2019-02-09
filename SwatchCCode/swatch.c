@@ -51,6 +51,7 @@ void swatch_initialization() {
     MySwatch.sett_subs = SET_HOURS;
     MySwatch.swatch_subs = DISPLAY;
     MySwatch.sc_state = NOT_COUNTING;
+    MySwatch.a_state = NOT_SETTED;
 }
 
 /* Handle signal for changing the current interface state */
@@ -148,4 +149,25 @@ void swatch_step(bool_t plus_b, bool_t minus_b, bool_t time_mode,
         }
         break;
     }
+
+    switch (MySwatch.a_state) {
+    case BUZZING:
+        if (old_state == ALARM_SET && alarm_mode)
+            MySwatch.a_state = SILENT;
+        break;
+    case SILENT:
+        if (MySwatch.alarm_time.hours == MySwatch.cur_time.hours &&
+            MySwatch.alarm_time.minutes == MySwatch.cur_time.minutes) {
+            MySwatch.a_state = BUZZING;
+        } else if (MySwatch.alarm_time.hours && MySwatch.alarm_time.minutes) {
+            MySwatch.a_state = NOT_SETTED;
+        }
+        break;
+    default: 
+        if (MySwatch.alarm_time.hours || MySwatch.alarm_time.minutes) {
+            MySwatch.a_state = SILENT;
+        }
+        break;
+    }
+
 }

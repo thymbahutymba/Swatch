@@ -74,7 +74,7 @@ void test_time_setting(void) {
     CU_ASSERT(t.hours == 23 && t.minutes == 25);
 }
 
-void test_swatch_step(void) {
+void test_stopwatch(void) {
     swatch_step(0, 0, 0, 0, 0, 1);
     CU_ASSERT(MySwatch.cur_state == STOPWATCH);
 
@@ -102,6 +102,30 @@ void test_swatch_step(void) {
 
     swatch_step(0, 1, 0, 0, 0, 0);
     CU_ASSERT(MySwatch.swatch_subs == PARTIAL);
+}
+
+void test_alarm(void) {
+    // Reset the time for the test
+    init_time(&MySwatch.alarm_time);
+    init_time(&MySwatch.cur_time);
+
+    swatch_step(0, 0, 0, 0, 1, 0);
+    CU_ASSERT(MySwatch.a_state == NOT_SETTED);
+    CU_ASSERT(MySwatch.cur_state = ALARM_SET);
+
+    // Set the time for the 1:00
+    swatch_step(1, 0, 0, 0, 0, 0);
+    CU_ASSERT(MySwatch.a_state == SILENT);
+
+    // Trigger the alarm increasing the current time
+    MySwatch.sett_subs = SET_HOURS;
+    MySwatch.cur_state = TIME_SET;
+    swatch_step(1, 0, 0, 0, 0, 0);
+    CU_ASSERT(MySwatch.a_state == BUZZING);
+
+    MySwatch.cur_state = ALARM_SET;
+    swatch_step(0, 0, 0, 0, 1, 0);
+    CU_ASSERT(MySwatch.a_state == SILENT);
 }
 
 int main() {
@@ -139,7 +163,12 @@ int main() {
         return CU_get_error();
     }
 
-    if (NULL == CU_add_test(pSuite, "Test the FSM", test_swatch_step)) {
+    if (NULL == CU_add_test(pSuite, "Test stopwatch", test_stopwatch)) {
+        CU_cleanup_registry();
+        return CU_get_error();
+    }
+
+    if (NULL == CU_add_test(pSuite, "Test alarm", test_alarm)) {
         CU_cleanup_registry();
         return CU_get_error();
     }
