@@ -30,15 +30,14 @@ extern "C" {
 #endif
 
 extern const unsigned char ImageBuffer[153654];
-extern const unsigned char icontime_on[3340];
-extern const unsigned char icontime_off[3340];
-extern const unsigned char icontimeset_on[3340];
-extern const unsigned char icontimeset_off[3340];
-extern const unsigned char iconalarm_on[3322];
-extern const unsigned char iconalarm_off[3322];
-extern const unsigned char iconswatch_on[3064];
-extern const unsigned char iconswatch_off[3064];
-extern const unsigned char text_bdrop[20230];
+extern const unsigned char icontime_on[7254];
+extern const unsigned char icontime_off[7254];
+extern const unsigned char icontimeset_on[7254];
+extern const unsigned char icontimeset_off[7254];
+extern const unsigned char iconalarm_on[7254];
+extern const unsigned char iconalarm_off[7254];
+extern const unsigned char iconswatch_on[7254];
+extern const unsigned char iconswatch_off[7254];
 
 #endif /*__PICTURES_H */ 
 

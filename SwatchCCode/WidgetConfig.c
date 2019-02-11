@@ -50,19 +50,18 @@ Image backg = {
 
 const Widget MyWatchScr[NUMWIDGETS] = {
 		{0, 0, 320, 240, BACKGROUND, (void *)&backg},
-		{30, 188, 39, 43, BUTTONICON, (void *)&buttontime},
-		{98, 188, 39, 43, BUTTONICON, (void *)&buttontimeset},
-		{169, 188, 38, 43, BUTTONICON, (void *)&buttonalarm},
-		{244, 188, 35, 43, BUTTONICON, (void *)&buttonswatch},
-		{270, 30, 40, 40, BUTTONICON, (void *)&buttonplus},
-		{270, 105, 40, 40, BUTTONICON, (void *)&buttonminus},
+		{16, 180, 60, 60, BUTTONICON, (void *)&buttontime},
+		{92, 180, 60, 60, BUTTONICON, (void *)&buttontimeset},
+		{168, 180, 60, 60, BUTTONICON, (void *)&buttonalarm},
+		{244, 180, 60, 60, BUTTONICON, (void *)&buttonswatch},
+		{244, 10, 60, 60, BUTTONICON, (void *)&buttonplus},
+		{244, 80, 60, 60, BUTTONICON, (void *)&buttonminus},
 
 		{30, 70, 200, 50, TEXT, (void *)&txt},
 		{50, 70, 180, 50, TEXT, (void *)&stxt},
-		{76, 70, 5, 50, TEXT, (void *)&txt}, // 80
-		{140, 70, 5, 50, TEXT, (void *)&txt}, // 149
-		{87, 70, 5, 50, TEXT, (void *)&stxt}, // 80
-		{135, 70, 5, 50, TEXT, (void *)&stxt}, // 149
+		{76, 70, 5, 50, TEXT, (void *)&txt},
+		{140, 70, 5, 50, TEXT, (void *)&txt},
+		{87, 70, 5, 50, TEXT, (void *)&stxt},
+		{135, 70, 5, 50, TEXT, (void *)&stxt},
 		{183, 70, 5, 50, TEXT, (void *)&stxt},
 };
-
